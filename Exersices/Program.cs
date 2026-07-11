@@ -23,6 +23,7 @@ namespace Exercises
                 Console.WriteLine("8. HP Simulator");
                 Console.WriteLine("9. Coins in your pockets");
                 Console.WriteLine("10. Energy game");
+                Console.WriteLine("11. Boss Fight");
                 Console.WriteLine("Type 'Exit' to quit the program");
                 Console.Write("Your choice: ");
 
@@ -32,10 +33,19 @@ namespace Exercises
                     Console.WriteLine("Invalid input. Please choose from the variant above");
                     continue;
                 }
+                else if (rawInput.Trim().ToLower() == "menu")
+                {
+                    continue;
+                }
 
                 string input = rawInput.Trim().ToLower();
 
-                if (input == "1")
+                if (input == "exit")
+                {
+                    Console.WriteLine("Exiting the program...");
+                    break;
+                }
+                else if (input == "1")
                 {
                     Console.WriteLine();
                     BookExercises.Run();
@@ -80,15 +90,15 @@ namespace Exercises
                     Console.WriteLine();
                     PocketCoins.Run();
                 }
-                else if (input == "exit")
-                {
-                    Console.WriteLine("Exiting the program...");
-                    break;
-                }
                 else if (input == "10")
                 {
                     Console.WriteLine();
                     EnergyGame.Run();
+                }
+                else if (input == "11")
+                {
+                    Console.WriteLine();
+                    BossFight.Run();
                 }
                 else
                 {

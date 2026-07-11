@@ -26,3 +26,4 @@
 /home/zira/Projects/Learning/C#/Exersices/obj/Debug/net10.0/Exersices.pdb
 /home/zira/Projects/Learning/C#/Exersices/obj/Debug/net10.0/Exersices.genruntimeconfig.cache
 /home/zira/Projects/Learning/C#/Exersices/obj/Debug/net10.0/ref/Exersices.dll
+/home/zira/Projects/Learning/C#/Exersices/obj/Debug/net10.0/Exersices.sourcelink.json
