@@ -2,35 +2,94 @@
 
 namespace Exercises
 {
-    internal class BookExercises
+    public class BookExercises
     {
-        public static void Run()
+        public void Run()
         {
-            Console.WriteLine("Create a password: ");
-            string? password = Console.ReadLine();
-            if (password == null)
+            new BankOperations().Main();
+        }
+        public class BankAccount
+        {
+            public string owner;
+            public double balance;
+
+            public void ShowInfo()
             {
-                Console.WriteLine("Invalid input. Please try again");
-                return;
+                Console.WriteLine($"Owner: {owner}, Balance: {balance}");
             }
 
-            string? passwordCheck;
-
-            Console.WriteLine("Now lets check if you still remember it: ");
-            do
+            public void Deposit(double amount)
             {
-                Console.Write("Enter your password: ");
-                passwordCheck = Console.ReadLine();
-                if (passwordCheck == null)
+                balance += amount;
+                Console.WriteLine($"Deposited: {amount}, New Balance: {balance}");
+            }
+
+            // public void Withdraw(double amount)
+            // {
+            //     if (amount <= balance)
+            //     {
+            //         balance -= amount;
+            //         Console.WriteLine($"Withdrew: {amount}, New Balance: {balance}");
+            //     }
+            //     else
+            //     {
+            //         Console.WriteLine("Insufficient funds.");
+            //     }
+            // }
+            
+            public bool Withdraw (double amount)
+            {
+                bool success = amount <= balance;
+                if (!success)
                 {
-                    Console.WriteLine("Invalid input. Please try again");
+                    Console.WriteLine("Insufficient funds.");
                 }
-                if (passwordCheck != password)
+                else
                 {
-                    Console.WriteLine("Incorrect password. Please try again.");
+                    balance -= amount;
+                    Console.WriteLine($"Withdraw: {amount}, New Balance: {balance}");
                 }
-            } while (passwordCheck != password);
-            Console.WriteLine("Password correct!");
+                return success;
+            }
+        }
+
+        public class BankOperations
+        {
+            public void Main()
+            {
+                BankAccount account = new BankAccount();
+                account.owner = "John Doe";
+                account.balance = 500.0;
+
+                account.ShowInfo();
+                account.Deposit(200.0);
+
+                // account.Withdraw(100.0);
+                // account.Withdraw(1000.0);
+                // account.ShowInfo();
+
+                bool firstWithdrawal = account.Withdraw(100.0);
+                if (firstWithdrawal)
+                {
+                    Console.WriteLine("First withdrawal successful.");
+                }
+                else
+                {
+                    Console.WriteLine("First withdrawal failed.");
+                }
+
+                bool secondWithdrawal = account.Withdraw(1000.0);
+                if (secondWithdrawal)
+                {
+                    Console.WriteLine("Second withdrawal successful.");
+                }
+                else
+                {
+                    Console.WriteLine("Second withdrawal failed.");
+                }
+
+                account.ShowInfo();
+            }
         }
     }
 }

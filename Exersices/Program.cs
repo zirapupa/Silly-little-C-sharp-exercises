@@ -48,7 +48,7 @@ namespace Exercises
                 else if (input == "1")
                 {
                     Console.WriteLine();
-                    BookExercises.Run();
+                    new BookExercises().Run();
                 }
                 else if (input == "2")
                 {
